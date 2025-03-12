@@ -6,6 +6,14 @@
     <link rel="stylesheet" href="/css/recipes.css">
 </head>
 <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <div class="navbar-nav ms-auto">
+                <button id="logoutBtn" class="btn btn-danger">Logout</button>
+            </div>
+        </div>
+    </nav>
+
     <div class="container">
         <h1 class="text-center my-4">Recipe Dashboard</h1>
         
@@ -59,5 +67,11 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="/js/recipes.js"></script>
+    <script>
+        document.getElementById('logoutBtn').addEventListener('click', () => {
+            // Add logout logic
+            window.location.href = '/';  // Redirect to login page
+        });
+    </script>
 </body>
 </html>
