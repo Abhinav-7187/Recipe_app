@@ -1,0 +1,120 @@
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  /*background: linear-gradient(to right, #ff5f6d, #ffc371);*/
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.login-container {
+  width: 450px; /* Wider container */
+  background-color: white;
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+.login-container::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(0deg, transparent, #3494e6, #ec6ead);
+  transform-origin: bottom right;
+  animation: rotate 5s linear infinite;
+  z-index: -1;
+}
+
+@keyframes rotate {
+  0% {
+      transform: rotate(0deg);
+  }
+  100% {
+      transform: rotate(360deg);
+  }
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  z-index: 1;
+}
+
+.login-form h2 {
+  text-align: center;
+  margin-bottom: 30px;
+  color: #333;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+.login-form input {
+  margin-bottom: 20px;
+  padding: 15px;
+  border: none;
+  background-color: #f0f0f0;
+  border-radius: 10px;
+  font-size: 16px;
+  transition: all 0.3s ease;
+}
+
+.login-form input:focus {
+  outline: none;
+  box-shadow: 0 0 0 4px rgba(52, 148, 230, 0.3);
+}
+
+.login-form button {
+  background: linear-gradient(to right, #3494e6, #ec6ead);
+  color: white;
+  border: none;
+  padding: 15px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  transition: transform 0.3s ease;
+}
+
+.login-form button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 5px 15px rgba(52, 148, 230, 0.4);
+}
+
+.login-form a {
+  text-align: center;
+  margin-top: 20px;
+  color: #3494e6;
+  text-decoration: none;
+  transition: color 0.3s ease;
+  font-weight: 500;
+}
+
+.login-form a:hover {
+  color: #ec6ead;
+  text-decoration: underline;
+}
+
+/* Optional: Add a subtle animation to the container */
+.login-container {
+  animation: float 4s ease-in-out infinite;
+}
+
+@keyframes float {
+  0% {
+      transform: translateY(0);
+  }
+  50% {
+      transform: translateY(-10px);
+  }
+  100% {
+      transform: translateY(0);
+  }
+}
