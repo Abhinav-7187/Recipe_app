@@ -45,6 +45,41 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    // Delete recipe functionality
+    if (deleteRecipeBtn && recipeId) {
+        deleteRecipeBtn.addEventListener('click', async () => {
+            try {
+                const response = await fetch(`/recipes/${recipeId}`, {
+                    method: 'DELETE',
+                    headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json'
+                    }
+                });
+    
+                console.log('Response status:', response.status);
+    
+                if (!response.ok) {
+                    const errorText = await response.text();
+                    console.error('Error response:', errorText);
+                    throw new Error(result.message || 'Failed to delete recipe');
+                }
+
+                const result = await response.json();
+                console.log('Delete response:', result);
+    
+                // Store deleted recipe ID
+                localStorage.setItem('deletedRecipeId', recipeId);
+                
+                // Redirect to recipes dashboard
+                window.location.href = '/recipes';
+            } catch (error) {
+                console.error('Error deleting recipe:', error);
+                alert(error.message || 'Failed to delete recipe');
+            }
+        });
+    }
+
     if (recipeId) {
         fetchRecipeDetails();
     }

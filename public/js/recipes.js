@@ -3,6 +3,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const recipeForm = document.getElementById('recipeForm');
     const categorySelect = document.querySelector('select[name="categoryId"]');
 
+    // Check if a recipe was just deleted
+    const deletedRecipeId = localStorage.getItem('deletedRecipeId');
+    if (deletedRecipeId) {
+        localStorage.removeItem('deletedRecipeId');
+        showSuccessToast('Recipe deleted successfully');
+    }
+
     // Comprehensive error handling utility
     function handleError(context, error) {
         console.error(`Error in ${context}:`, error);
@@ -68,20 +75,25 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             });
             
-            // Validate response
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
             }
             
             const recipes = await response.json();
             
+            console.log('Fetched recipes:', recipes);
+            
             // Clear existing cards
             recipeCards.innerHTML = '';
             
             // Validate recipes
             if (Array.isArray(recipes) && recipes.length > 0) {
-                recipes.forEach(recipe => {
-                    // Sanitize data to prevent XSS
+                // Filter out the deleted recipe
+                const filteredRecipes = deletedRecipeId 
+                    ? recipes.filter(recipe => recipe.id !== parseInt(deletedRecipeId))
+                    : recipes;
+
+                filteredRecipes.forEach(recipe => {
                     const safeTitle = escapeHTML(recipe.title);
                     const safeCategory = escapeHTML(recipe.Category?.name || 'Uncategorized');
                     
@@ -100,6 +112,15 @@ document.addEventListener('DOMContentLoaded', () => {
                     `;
                     recipeCards.innerHTML += cardHTML;
                 });
+
+                // If no recipes left after filtering
+                if (filteredRecipes.length === 0) {
+                    recipeCards.innerHTML = `
+                        <div class="col-12 text-center">
+                            <p>No recipes found. Start adding some!</p>
+                        </div>
+                    `;
+                }
             } else {
                 recipeCards.innerHTML = `
                     <div class="col-12 text-center">
@@ -111,6 +132,7 @@ document.addEventListener('DOMContentLoaded', () => {
             handleError('Fetching Recipes', error);
         }
     }
+
 
     // Submit new recipe with validation and error handling
     recipeForm.addEventListener('submit', async (e) => {

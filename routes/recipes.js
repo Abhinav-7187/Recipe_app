@@ -81,6 +81,45 @@ router.get('/:id', async (req, res) => {
   }
 });
 
+// Delete recipe by ID
+router.delete('/:id', async (req, res) => {
+  try {
+    const recipeId = req.params.id;
+    
+    console.log('Attempting to delete recipe ID:', recipeId);
+
+    // Explicitly check if recipe exists before deletion
+    const existingRecipe = await Recipe.findByPk(recipeId);
+    
+    if (!existingRecipe) {
+      console.log('Recipe not found');
+      return res.status(404).json({ message: 'Recipe not found' });
+    }
+
+    // Perform deletion
+    const deletedCount = await Recipe.destroy({
+      where: { id: recipeId }
+    });
+
+    console.log('Deletion result:', deletedCount);
+
+    if (deletedCount > 0) {
+      res.status(200).json({ 
+        message: 'Recipe deleted successfully', 
+        recipeId: recipeId 
+      });
+    } else {
+      console.log('No rows deleted');
+      res.status(400).json({ message: 'Failed to delete recipe' });
+    }
+  } catch (error) {
+    console.error('Detailed deletion error:', error);
+    res.status(500).json({ 
+      message: 'Error deleting recipe', 
+      error: error.message 
+    });
+  }
+});
 
 
 module.exports = router;

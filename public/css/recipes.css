@@ -3,6 +3,25 @@ body {
   font-family: 'Arial', sans-serif;
 }
 
+.dashboard-title {
+  font-family: 'Playfair Display', serif;
+  font-weight: 900;
+  letter-spacing: 2px;
+  text-shadow: 3px 3px 6px rgba(0,0,0,0.15);
+  background: linear-gradient(45deg, #2c3e50, #3498db);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  transform: scale(1.05);
+  transition: transform 0.3s ease;
+}
+
+.dashboard-title:hover {
+  transform: scale(1.08);
+  text-shadow: 4px 4px 8px rgba(0,0,0,0.2);
+}
+
 .recipe-card {
   margin-bottom: 20px;
   border-radius: 12px;
