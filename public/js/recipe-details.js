@@ -36,6 +36,28 @@ document.addEventListener('DOMContentLoaded', () => {
                     </div>
                 </div>
             `;
+
+            // Share the recipe-details through whatsapp
+const whatsappShareBtn = document.getElementById('whatsappShareBtn');
+
+if (whatsappShareBtn) {
+    whatsappShareBtn.addEventListener('click', () => {
+        const shareText = `
+Recipe: ${recipe.title}
+
+Ingredients:
+${recipe.ingredients}
+
+Instructions:
+${recipe.instructions}
+
+Category: ${recipe.Category.name}
+        `;
+
+        const whatsappUrl = `https://wa.me/?text=${encodeURIComponent(shareText)}`;
+        window.open(whatsappUrl, '_blank');
+    });
+}
         } catch (error) {
             recipeDetailsContainer.innerHTML = `
                 <div class="alert alert-danger">
