@@ -61,22 +61,3 @@ Ensure you have the following installed on your system:
 Node.js & npm
 MySQL
 Sequelize CLI
-Installation Steps
-bash
-Copy code
-# Clone the repository
-git clone https://github.com/your-username/recipe-sharing-app.git
-
-# Navigate to the project directory
-cd recipe-sharing-app
-
-# Install dependencies
-npm install
-
-# Set up environment variables in a .env file
-DATABASE_URL=<your-database-url>
-SESSION_SECRET=<your-session-secret>
-
-# Run the application
-npm start
-Your Recipe Sharing App is now up and running! 🎉
