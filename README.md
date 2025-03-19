@@ -3,24 +3,24 @@
 A comprehensive web application designed to revolutionize recipe sharing and management. The Recipe Sharing App provides users with an intuitive platform to create, explore, and share culinary experiences seamlessly across different devices.
 
 🚀 Key Features
-🔐 Secure User Authentication
+Secure User Authentication
+
 Robust login and signup system with encrypted password storage
+Recipe Management
 
-📝 Recipe Management
 Create, view, and delete recipes with comprehensive details
+Recipe Categorization
 
-🍽️ Recipe Categorization
 Organize recipes across multiple categories (Breakfast, Lunch, Dinner, Dessert, Snacks)
+Responsive Design
 
-📱 Responsive Design
 Fully adaptive interface working across all device types
+WhatsApp Sharing
 
-🤝 WhatsApp Sharing
 Instant recipe sharing functionality
+Interactive Dashboard
 
-🎨 Interactive Dashboard
 Elegant recipe card display with smooth interactions
-
 🏗 How It Works
 User Authentication
 Secure registration process with input validation
@@ -43,11 +43,21 @@ Asynchronous API calls for smooth user experience
 Interactive recipe cards with hover effects
 Instant feedback mechanisms
 🛠️ Technical Architecture
-Frontend: HTML5, CSS3, Bootstrap, Vanilla JavaScript
-Backend: Node.js, Express.js
-Database: MySQL with Sequelize ORM
-Authentication: Session-based with bcryptjs
-Deployment: Vercel, AWS RDS
+Frontend:
+
+HTML5, CSS3, Bootstrap, Vanilla JavaScript
+Backend:
+
+Node.js, Express.js
+Database:
+
+MySQL with Sequelize ORM
+Authentication:
+
+Session-based with bcryptjs
+Deployment:
+
+Vercel, AWS RDS
 💡 Innovative Aspects
 Simplified recipe management interface
 Seamless cross-platform experience
